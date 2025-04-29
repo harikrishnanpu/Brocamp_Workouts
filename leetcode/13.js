@@ -1,11 +1,8 @@
-//WEEK 10
-
 /**
  * @param {string} s
  * @return {number}
  */
-var romanToInt = function(s) { // LCM
-    let val = 0;
+var romanToInt = function(s) {
     let arr = s.split('');
     let roman = {
         'I' : 1,
@@ -20,25 +17,19 @@ var romanToInt = function(s) { // LCM
     let value = 0;
         
 
-    for(let i=0; i < arr.length; i++){
+    for(let i=0; i < arr.length; i++) {
+        let curr = roman[arr[i]];
+        let next = roman[arr[i + 1]];
         
-
-        for(let r in roman){
-            if(arr[i] == r){
-                if(value < roman[r]){
-                    value  = roman[r] - value
+                if(curr < next){
+                    value -= curr;
                 }else{
-                    value += roman[r]
+                    value += curr;
                 }
-            }
-        }
-        
     }
     
     return value
-    
-    
-}
+};
 
 
-console.log(romanToInt("V"));
+console.log(romanToInt("MCMXCIV"));
